@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw, ImageFont
 
-# Create blank white image for clarity
-width, height = 1400, 1000
+
+width, height = 1400, 1200
 image = Image.new("RGB", (width, height), "white")
 draw = ImageDraw.Draw(image)
 
@@ -55,7 +55,7 @@ for idx, m in enumerate(col2):
     draw.text((x2, y_start + idx*25), m, fill="black", font=small_font)
 
 # src/modelo
-draw_package(20, 550, 1360, 430, "src/modelo")
+draw_package(20, 550, 1360, 550, "src/modelo")
 
 # Function to draw class box
 def draw_class(x, y, title, lines):
@@ -95,16 +95,16 @@ def draw_arrow(start, end):
 draw_arrow((600, 220), (300, 260))
 
 # Controlador -> Modelo classes
-draw_arrow((300, 350), (500, 740))   # to Producto
-draw_arrow((300, 350), (725, 740))   # to Servicio
-draw_arrow((300, 350), (1125, 740))  # to PaqueteCompra
-draw_arrow((300, 350), (500, 900))   # to SolicitudCompra
+draw_arrow((300, 350), (500, 740))   
+draw_arrow((300, 350), (725, 740))   
+draw_arrow((300, 350), (1125, 740))  
+draw_arrow((300, 350), (500, 900))   
 
 # Calculable -> implementations
-draw_arrow((190, 640), (500, 740))   # to Producto
-draw_arrow((190, 640), (725, 740))   # to Servicio
-draw_arrow((190, 640), (1125, 740))  # to PaqueteCompra
-draw_arrow((190, 640), (500, 900))   # to SolicitudCompra
+draw_arrow((190, 640), (500, 740))   
+draw_arrow((190, 640), (725, 740))   
+draw_arrow((190, 640), (1125, 740))  
+draw_arrow((190, 640), (500, 900))   
 
 # Documento -> SolicitudCompra
 draw_arrow((500, 640), (500, 900))
