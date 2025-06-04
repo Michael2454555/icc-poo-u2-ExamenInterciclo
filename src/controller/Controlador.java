@@ -470,41 +470,53 @@ public class Controlador {
 
     /** Aprobar solicitud */
     private void aprobarSolicitud() {
-        String num = leerCadena("Número de solicitud a aprobar: ");
-        if (!esNumerico(num)) {
-            System.out.println("Error: el número de la solicitud debe contener solo números.");
-            return;
-        }
-        Optional<SolicitudCompra> opt = solicitudes.stream()
-            .filter(s -> s.getNumero().equalsIgnoreCase(num))
-            .findAny();
-        if (opt.isPresent()) {
-            SolicitudCompra sol = opt.get();
+    String num = leerCadena("Número de solicitud a aprobar: ");
+    if (!esNumerico(num)) {
+        System.out.println("Error: el número de la solicitud debe contener solo números.");
+        return;
+    }
+    Optional<SolicitudCompra> opt = solicitudes.stream()
+        .filter(s -> s.getNumero().equalsIgnoreCase(num))
+        .findAny();
+    if (opt.isPresent()) {
+        SolicitudCompra sol = opt.get();
+        if (sol.getEstado() == EstadoSolicitud.APROBADA) {
+            System.out.println("La solicitud ya fue aprobada.");
+        } else if (sol.getEstado() == EstadoSolicitud.RECHAZADA) {
+            System.out.println("La solicitud ya fue rechazada y no puede aprobarse.");
+        } else {
             sol.aprobar();
             System.out.println("Solicitud \"" + num + "\" ahora está en estado: " + sol.getEstado());
-        } else {
-            System.out.println("No se encontró la solicitud \"" + num + "\".");
         }
+    } else {
+        System.out.println("No se encontró la solicitud \"" + num + "\".");
     }
+}
 
     /** Rechazar solicitud */
     private void rechazarSolicitud() {
-        String num = leerCadena("Número de solicitud a rechazar: ");
-        if (!esNumerico(num)) {
-            System.out.println("Error: el número de la solicitud debe contener solo números.");
-            return;
-        }
-        Optional<SolicitudCompra> opt = solicitudes.stream()
-            .filter(s -> s.getNumero().equalsIgnoreCase(num))
-            .findAny();
-        if (opt.isPresent()) {
-            SolicitudCompra sol = opt.get();
+    String num = leerCadena("Número de solicitud a rechazar: ");
+    if (!esNumerico(num)) {
+        System.out.println("Error: el número de la solicitud debe contener solo números.");
+        return;
+    }
+    Optional<SolicitudCompra> opt = solicitudes.stream()
+        .filter(s -> s.getNumero().equalsIgnoreCase(num))
+        .findAny();
+    if (opt.isPresent()) {
+        SolicitudCompra sol = opt.get();
+        if (sol.getEstado() == EstadoSolicitud.RECHAZADA) {
+            System.out.println("La solicitud ya fue rechazada.");
+        } else if (sol.getEstado() == EstadoSolicitud.APROBADA) {
+            System.out.println("La solicitud ya fue aprobada y no puede rechazarse.");
+        } else {
             sol.rechazar();
             System.out.println("Solicitud \"" + num + "\" ahora está en estado: " + sol.getEstado());
-        } else {
-            System.out.println("No se encontró la solicitud \"" + num + "\".");
         }
+    } else {
+        System.out.println("No se encontró la solicitud \"" + num + "\".");
     }
+}
 
     /** Calcular total de una solicitud */
     private void calcularTotalSolicitud() {
