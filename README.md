@@ -5,7 +5,7 @@
 - **Título:**  Diseño y desarrollo de una aplicación orientada a objetos utilizando Java
 - **Asignatura:** Programación Orientada a Objetos
 - **Carrera:** Computación
-- **Estudiante:** Michael Yumbla 
+- **Estudiante:** Michael Yumbla, Adriano Rodas 
 - **Fecha:** 02/04/2025
 - **Profesor:** Ing. Juan Pablo
 
